@@ -1,4 +1,4 @@
-2// 953261 Lab 2 — Kad Café data functions
+// 953261 Lab 2 — Kad Café data functions
 // Rules for this file:
 //   • Use array methods (map, filter, find, reduce, some, ...). No for / while loops.
 //   • Never change (mutate) the arrays or objects you are given — return new ones.
@@ -33,7 +33,7 @@ export function findItem(menu, id) {
 export function availableIn(menu, category) {
   // TODO
   return menu
-  .filter((item) => item.availible && item.category === category)
+  .filter((item) => item.available && item.category === category)
   .map((item) => item.name);
 }
 
@@ -46,8 +46,9 @@ export function menuLine(item) {
   // TODO
   const { name, price, available } = item;
   return available
-    ? `${name} — ${price} THB`
-    : `${name} — ${price} THB (sold out)`;
+        ? `${name} — ${price} THB`
+
+        : `${name} — ${price} THB (sold out)`;
 }
 
 // Task 6 — spread
@@ -58,8 +59,7 @@ export function withDiscount(item, percent) {
   // TODO
   return {
     ...item,
-    price: Math.round((item.price * (100 - percent)) / 100),
-  };
+    price: Math.round((item.price * (100 - percent)) / 100)};
 }
 
 // Task 7 — reduce + find
@@ -70,8 +70,7 @@ export function orderTotal(order, menu) {
   // TODO
   return order.items.reduce((sum, line) => {
     const item = findItem(menu, line.menuId);
-    return sum + item.price * line.qty;
-  }, 0);
+    return sum + item.price * line.qty;}, 0);
 }
 
 // Task 8 — map + reduce   (this is quiz Q10 again!)
