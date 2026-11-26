@@ -44,6 +44,10 @@ export function availableIn(menu, category) {
 // Hint: start with  const { name, price, available } = item;
 export function menuLine(item) {
   // TODO
+  const { name, price, available } = item;
+  return available
+    ? `${name} — ${price} THB`
+    : `${name} — ${price} THB (sold out)`;
 }
 
 // Task 6 — spread
@@ -52,6 +56,10 @@ export function menuLine(item) {
 // withDiscount({ ..., price: 45 }, 10) → { ..., price: 41 }   (45 × 0.9 = 40.5 → 41)
 export function withDiscount(item, percent) {
   // TODO
+  return {
+    ...item,
+    price: Math.round((item.price * (100 - percent)) / 100),
+  };
 }
 
 // Task 7 — reduce + find
@@ -60,6 +68,10 @@ export function withDiscount(item, percent) {
 // orderTotal(orders[0], menu) → 160   (2 × 45 + 1 × 70)
 export function orderTotal(order, menu) {
   // TODO
+  return order.items.reduce((sum, line) => {
+    const item = findItem(menu, line.menuId);
+    return sum + item.price * line.qty;
+  }, 0);
 }
 
 // Task 8 — map + reduce   (this is quiz Q10 again!)
@@ -67,6 +79,11 @@ export function orderTotal(order, menu) {
 // Return 0 when there are no orders.
 export function averageOrder(orders, menu) {
   // TODO
+  if (orders.length === 0) return 0;
+  const totalSales = orders
+    .map((order) => orderTotal(order, menu))
+    .reduce((sum, total) => sum + total, 0);
+  return Number((totalSales / orders.length).toFixed(2));
 }
 
 // ───────────── Stretch (optional) ─────────────
