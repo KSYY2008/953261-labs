@@ -29,6 +29,7 @@ function addPrices(priceText1, priceText2) {
 function average(nums) {
   let sum = nums.reduce((total,n) => total + n, 0);
   return sum / nums.length;
+  
 }
 
 // ─────────── checks — do not edit below this line ───────────
