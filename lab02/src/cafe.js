@@ -45,10 +45,7 @@ export function availableIn(menu, category) {
 export function menuLine(item) {
   // TODO
   const { name, price, available } = item;
-  return available
-        ? `${name} — ${price} THB`
-
-        : `${name} — ${price} THB (sold out)`;
+  return available ? `${name} — ${price} THB` : `${name} — ${price} THB (sold out)`;
 }
 
 // Task 6 — spread
@@ -90,10 +87,32 @@ export function averageOrder(orders, menu) {
 // Task 9 — return the NAME of the item with the highest total quantity sold.
 export function bestSeller(orders, menu) {
   // TODO
+  const counts = orders
+    .flatMap((order) => order.items)
+    .reduce((tally, line) => {
+      tally[line.menuId] = (tally[line.menuId] ?? 0) + line.qty;
+      return tally;
+    }, {});
+
+  const [topId] = Object.entries(counts).toSorted((a, b) => b[1] - a[1])[0];
+  return findItem(menu, topId).name;
 }
 
 // Task 10 — group item names by category:
 // { drink: ["Thai Iced Tea", ...], food: [...], dessert: [...] }
 export function namesByCategory(menu) {
   // TODO
+  return menu.reduce((groups, item) => {
+    groups[item.category] = groups[item.category] ?? [];
+    groups[item.category].push(item.name);
+    return groups;
+  }, {});
+}
+
+
+export function cheapDrinks(menu, maxPrice) {
+  return menu
+    .filter((item) => item.available && item.category === "drink" && item.price <= maxPrice)
+    .toSorted((a, b) => a.price - b.price)
+    .map((item) => menuLine(item));
 }

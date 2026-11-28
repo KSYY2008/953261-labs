@@ -2,9 +2,9 @@
 
 | | |
 |---|---|
-| **Name** | _your full name_ |
-| **Nickname** | _your nickname_ |
-| **Student ID** | _6xxxxxxxx_ |
+| **Name** | KYAW SU YEE YWAL |
+| **Nickname** | JOPHIAL |
+| **Student ID** | 692115504 |
 | **Section** | 701 |
 
 ## How to run
@@ -17,13 +17,13 @@ npm start        # Part D — the daily report
 ```
 
 ## My own function (Part D)
+the cheapDrinks function filters any items that are available and are from the drink category, then sorts them from most cheapest to expensive.  
 
-_Name of your function, what it returns, and which array methods it uses._
 
 ## What I learned today
 
-_Write 2–3 sentences in your own words: when would you use map, filter, find and reduce?_
+Fixing common js bugs, how array methods work, the object deconstruction, making functions, importing and exporting and how to run the files using terminal commands. 
 
 ## AI-use statement
 
-_Did you use an AI tool in this lab? If yes, which one and for what. If no, write "No AI tools used."_
+I used AI to explain some concepts that are unsolidified yet and hard to understand. such as the way to import functions and how each files communicate with each other and told it to explain me the basics of everything before I do anything so I had an understanding first before I did anything. 
